@@ -4,10 +4,11 @@ $(function(){
         let uwp_id = `uwp_${$(this).attr("uwp")}`;
         let file_uwp_id = "file_"+uwp_id;
         let b64_uwp_id = "b64_"+uwp_id;
+        let required = (typeof $(this).attr("required") !== 'undefined' && $(this).attr("required") !== false) ? "required" : "";
         $(this).attr("id", uwp_id);
         $(this).attr("onClick", `$("#${file_uwp_id}").click()`);
-        let inputB64 = `<input required type='text' class='uwp_input' id='${b64_uwp_id}' name='${$(this).attr("uwp")}' />`;
-        let inputFile = `<input required type='file' class='uwp_input' id='${file_uwp_id}' name='${uwp_id}' />`;
+        let inputB64 = `<input ${required} type='text' class='uwp_input' id='${b64_uwp_id}' name='${$(this).attr("uwp")}' />`;
+        let inputFile = `<input ${required} type='file' class='uwp_input' id='${file_uwp_id}' name='${uwp_id}' />`;
         $(inputFile).insertAfter($(this));
         $(inputB64).insertAfter($(this));
         $("#"+file_uwp_id).change(readfile_uwp);

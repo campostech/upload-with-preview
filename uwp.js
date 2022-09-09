@@ -18,7 +18,6 @@ $(function() {
             '/': 'data:image/jpg;base64,',
             'i': 'data:image/png;base64,',
         }
-
         let image = new Image()
         if (!knownTypes[string[0]]) {
             console.log("encoded image didn't match known types");
@@ -48,29 +47,32 @@ $(function() {
         let inputFile = `<input uwp_maxsize="${maxSize}" type='file' class='uwp_input' id='${file_uwp_id}' name='${uwp_id}' accept="image/*" />`;
         $(inputFile).insertAfter($(this));
         $(inputB64).insertAfter($(this));
-        $("#" + file_uwp_id).change(readfile_uwp);
+        $("#" + file_uwp_id).change(readfile);
 
         let value = hasAttr(this, "value") ? $(this).attr("value") : null;
+        setValueToUWP(uwp_id, value);
+
+    });
+
+    function setValueToUWP(uwp_id, value) {
         if (value != null) {
             if (isValidUrl(value)) {
                 setBase64ImageFromURL(uwp_id, value);
             } else {
                 value = value.replace(/^data:image\/(png|jpg|svg);base64,/, "");
                 if (isValidB64Image(value)) {
-                    console.log(`data:image/png;base64,${value}`);
                     setImageUWPtoFields(uwp_id, `data:image/png;base64,${value}`);
                 }
             }
         }
-
-    });
+    }
 
     function setImageUWPtoFields(uwp_id, data) {
         $(`#${uwp_id}`).attr("src", data);
         $(`#b64_${uwp_id}`).val(data);
     }
 
-    function readfile_uwp() {
+    function readfile() {
         if (!this.files || !this.files[0]) return;
         let maxSize = parseFloat($(this).attr('uwp_maxsize'));
         let fileSize = this.files[0].size / 1024;

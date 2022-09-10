@@ -1,5 +1,6 @@
 # Upload With Preview
 
+<img src="assets/images/animation.gif" />
 This lib is a easy tool to use in html forms with image fields. With UWP you can use a <img> as a complex input for images (autoload, b64 conversion, value).
 
 ## Installation

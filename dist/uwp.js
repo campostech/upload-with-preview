@@ -18,12 +18,12 @@ $(function() {
             '/': 'data:image/jpg;base64,',
             'i': 'data:image/png;base64,',
         }
-        let image = new Image()
+        let image = new Image();
         if (!knownTypes[string[0]]) {
             console.log("encoded image didn't match known types");
             return false;
         } else {
-            image.src = knownTypes[0] + string
+            image.src = `data:image/png;base64,${string}`;
             image.onload = function() {
                 if (image.height === 0 || image.width === 0) {
                     console.log('encoded image missing width or height');
@@ -57,12 +57,12 @@ $(function() {
         if (value != null) {
             if (isValidUrl(value)) {
                 setBase64ImageFromURL(uwp_id, value);
-                $(`#b64_${uwp_id}`).val(null);
+                $(`#file_${uwp_id}`).val(null);
             } else {
                 value = value.replace(/^data:image\/(png|jpg|svg);base64,/, "");
                 if (isValidB64Image(value)) {
                     setImageUWPtoFields(uwp_id, `data:image/png;base64,${value}`);
-                    $(`#b64_${uwp_id}`).val(null);
+                    $(`#file_${uwp_id}`).val(null);
                 }
             }
         }

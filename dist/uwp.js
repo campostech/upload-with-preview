@@ -43,7 +43,7 @@ $(function() {
         $(this).attr("id", uwp_id);
         $(this).attr("onClick", `$("#${file_uwp_id}").click()`);
         let inputB64 = `<input ${required} type='text' class='uwp_input' id='${b64_uwp_id}' name='${$(this).attr("uwp")}' />`;
-        let inputFile = `<input uwp_maxsize="${maxSize}" type='file' class='uwp_input' id='${file_uwp_id}' name='${uwp_id}' accept="image/*" />`;
+        let inputFile = `<input uwp_maxsize="${maxSize}" type='file' class='uwp_input' id='${file_uwp_id}' name='${uwp_id}' accept="image/svg, image/jpeg, image/png" />`;
         $(inputFile).insertAfter($(this));
         $(inputB64).insertAfter($(this));
         $("#" + file_uwp_id).change(readfile);

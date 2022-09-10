@@ -40,7 +40,6 @@ $(function() {
         let b64_uwp_id = `b64_${uwp_id}`;
         let required = hasAttr(this, "required") ? `required=${$(this).attr("required")}` : "";
         let maxSize = hasAttr(this, "maxsize") ? $(this).attr("maxsize") : 5120;
-
         $(this).attr("id", uwp_id);
         $(this).attr("onClick", `$("#${file_uwp_id}").click()`);
         let inputB64 = `<input ${required} type='text' class='uwp_input' id='${b64_uwp_id}' name='${$(this).attr("uwp")}' />`;
@@ -78,7 +77,7 @@ $(function() {
         let fileSize = this.files[0].size / 1024;
 
         if (fileSize > maxSize) {
-            alert(`File is too big! The maximum size is kb`);
+            alert(`File is too big! The maximum size is ${maxSize}kb`);
             this.value = "";
             return;
         };

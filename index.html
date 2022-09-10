@@ -1,37 +1,113 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8" />
-        <link rel="stylesheet" href="uwp.css" />
-        <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-        <script type="text/javascript" src="uwp.js"></script>
-        <style>
-            body {
-                text-align: center;
-                font-family: Arial;
-                font-size: 12px;
-            }
-            h2 {
-                padding-top:20px;
-                font-size: 14px;
-                font-weight: normal;
-                border-top:1px solid #eeeeee;
-            }
-            a {
-                border:0;
-                color: #2645FF;
-                text-decoration: none;
-            }
-        </style>
-        <title>UWP —Demo</title>
-    </head>
-    <body>
-        <form action="">
-            <img src="blank.svg" uwp="thumb" required>
-            <button>Enviar</button>
-        </form>
-        <script>
-        </script>
-    </body>
+<!doctype html>
+<html lang="pt-br">
 
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="styled_bootstrap.css" rel="stylesheet">
+    <link href="uwp.css" rel="stylesheet">
+
+    <title>Upload With Preview</title>
+  </head>
+
+  <body class="bg-light">
+
+    <div class="container">
+
+        <div class="py-5 text-center mx-auto col-md-10">
+            <img class="d-block mx-auto mb-4" src="logo.png" height="72">
+            <h2>Upload With Preview</h2>
+            <p class="lead">This lib is a easy tool to use in html forms with image fields. With UWP you can use a"img" as a complex input for images (autoload, b64 conversion, value).</p>
+          </div>
+          <div class="row justify-content-center">
+            <div class="col-md-10">
+              <form id="form" class="needs-validation" method="GET">
+                <h4 class="mb-3">Installation</h4>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label>Add the following tag to the header of your page</label>
+                        <input type="text" readonly class="form-control" id="code1" value='<link rel="stylesheet" href="uwp.css" />'>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label>Add the following tag to the end of your body page</label>
+                        <input type="text" readonly class="form-control" id="code2" value='<script src="uwp.js"></script>'>
+                    </div>
+                </div>
+        
+                <h4 class="mb-3">Usage</h4>
+                <div class="row">
+                    <div class="mb-3 col-md-8">
+                      <div class="col-md-12">
+                        <label>1. For use you need put the attribute "uwp" as name of input that will has base64 content from image after upload file</label>
+                        <input type="text" readonly class="form-control" id="code3" value='<img src="blank.svg" uwp="example1" />'>
+                      </div>
+                      <div class="col-md-12">
+                        <label>2. If you want a required input, just put"required" attribute in "img" element</label>
+                        <input type="text" readonly class="form-control" id="code4" value='<img src="blank.svg" uwp="example2" required />'>
+                      </div>
+                      <div class="col-md-12">
+                        <label>3. If you want the input with a loaded value (full url or base64), just put "value" attribute in"img" element</label>
+                        <input type="text" readonly class="form-control" id="code5" value='<img src="blank.svg" uwp="example3" value="https://www.gstatic.com/webp/gallery3/1.sm.png"/>'>
+                      </div>
+                      <div class="col-md-12">
+                        <label>4. If you want limit file size, just put "maxsize" attribute on image (in KB's)</label>
+                        <input type="text" readonly class="form-control" id="code6" value='<img src="blank.svg" uwp="example4" maxsize="2000">'>
+                      </div>
+                      <button class="col-md-12 btn btn-success">Submit For Test</button>
+                    </div>
+                    <div class="row col-md-4">
+                      <div class="col-md-6 text-center">
+                        <label for="example1" class="h2 col-md-12">Sample 1</label>
+                        <img id="example1" src="blank.svg" uwp="example1">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <label for="example2" class="h2 col-md-12">Sample 2</label>
+                        <img id="example2" src="blank.svg" required uwp="example2">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <label for="example3" class="h2 col-md-12">Sample 3</label>
+                        <img id="example3" src="blank.svg" value="https://www.gstatic.com/webp/gallery3/1.sm.png" uwp="example3">
+                      </div>
+                      <div class="col-md-6 text-center">
+                        <label for="example4" class="h2 col-md-12">Sample 4</label>
+                        <img id="example4" src="blank.svg" uwp="example4" maxsize="2000">
+                      </div>
+                    </div>
+                </div>
+                <h4 class="mb-3">Contributing</h4>
+                <div class="col-md-12 mb-3">
+                    <label>Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.</label>
+                    <label>Please make sure to update tests as appropriate.</label>
+                </div>
+
+                <cite>If this help you or you liked, you can<br></cite>
+                <a class="bmc-button" target="_blank" href="https://mpago.la/2UT2nnT"><img src="https://www.buymeacoffee.com/assets/img/BMC-btn-logo.svg" alt="Buy me a coffee">Buy me a coffee</a>
+              </form>
+            </div>
+          </div>
+
+      <footer class="my-5 pt-5 text-muted text-center text-small">
+        <p class="mb-1">&copy; 2022 - <a href="http://campostech.com.br/lucascampos" target="_blank">Lucas Campos</a></p>
+      </footer>
+    </div>
+
+    
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="uwp.js"></script>
+    <script>
+      $("input").each(function(){
+        $(this).attr("title", "Click to copy code");
+        $(this).attr("onClick", `copyToClipboard('${$(this).val()}')`);
+      });
+      function copyToClipboard(text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+        alert("Code copied to clipboard!");
+      }
+    </script>
+  </body>
 </html>

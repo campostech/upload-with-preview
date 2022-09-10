@@ -57,10 +57,12 @@ $(function() {
         if (value != null) {
             if (isValidUrl(value)) {
                 setBase64ImageFromURL(uwp_id, value);
+                $(`#b64_${uwp_id}`).val(null);
             } else {
                 value = value.replace(/^data:image\/(png|jpg|svg);base64,/, "");
                 if (isValidB64Image(value)) {
                     setImageUWPtoFields(uwp_id, `data:image/png;base64,${value}`);
+                    $(`#b64_${uwp_id}`).val(null);
                 }
             }
         }

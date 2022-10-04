@@ -21,7 +21,7 @@
           </div>
           <div class="row justify-content-center">
             <div class="col-md-10">
-              <form id="form" class="needs-validation" method="POST" action="result.php">
+              <form id="form" class="needs-validation">
                 <h4 class="mb-3">Installation</h4>
                 <div class="row">
                     <div class="col-md-6 mb-3">
@@ -93,12 +93,39 @@
       </footer>
     </div>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#requestFormModal">
+      Launch demo modal
+    </button>
+    
+    <!-- Modal -->
+    <div class="modal col-md-10 fade" id="requestFormModal" tabindex="-1" role="dialog" aria-labelledby="requestFormModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="requestFormModalLabel">Request Result</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" id="modalBody">
+            
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
     
     <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
     <script>
-      let relativeImageURL = `${location.href.substring(0, location.href.lastIndexOf("/"))}/assets/favicon.png`;
-      $("#example3").attr("value", relativeImageURL);
-      $("#code5").val(`<img src="assets/images/blank.png" uwp="example3" value="${relativeImageURL}"/>`)
+      if($("#example3").attr("value") == ""){
+        let relativeImageURL = `${location.href.substring(0, location.href.lastIndexOf("/"))}/assets/favicon.png`;
+        $("#example3").attr("value", relativeImageURL);
+      }
+      $("#code5").val(`<img src="assets/images/blank.png" uwp="example3" value="${$("#example3").attr("value")}"/>`)
+      
       $("input").each(function(){
         $(this).attr("title", "Click to copy code");
         $(this).attr("onClick", `copyToClipboard('${$(this).val()}')`);
@@ -113,6 +140,19 @@
         alert("Code copied to clipboard!");
       }
       </script>
+      <script>
+      $('#form').submit(function() {
+        let result = "";
+        for (const input of document.getElementById("form").querySelectorAll('input[name]')) {
+          result += `<h3>${input.name}:</h3><br><textarea class="col-md-12" rows="3">${input.value}</textarea>`;  
+        }
+        $("#modalBody").html(result);
+        $("#requestFormModal").modal("show");
+        return false; 
+      });
+      </script>
       <script src="dist/uwp.js"></script>
+      <script src="assets/js/bootstrap.js"></script>
+
   </body>
 </html>
